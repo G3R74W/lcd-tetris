@@ -91,11 +91,11 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x100               0x11e           0x1ad  (429)
-.text                        0x21e               0x4de           0x74d  (1869)
-.init.delay32                0x6fc                0x1c            0x2a  (42)
-.dinit                       0x718                0x12            0x1b  (27)
+.text                        0x21e               0x596           0x861  (2145)
+.dinit                       0x7b4                0x2e            0x45  (69)
+.init.delay32                0x7e2                0x1c            0x2a  (42)
 
-                 Total "program" memory used (bytes):          0x93f  (2367) <1%
+                 Total "program" memory used (bytes):          0xa7d  (2685) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x8000]
@@ -104,8 +104,10 @@ section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .ndata                       0x800                   0             0x4  (4)
 .nbss                        0x804                   0             0x2  (2)
+.data                        0x806                   0            0x18  (24)
+.bss                         0x81e                   0             0x8  (8)
 
-                 Total "data" memory used (bytes):            0x6  (6) <1%
+                 Total "data" memory used (bytes):           0x26  (38) <1%
 
 
 Dynamic Memory Usage
@@ -113,9 +115,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x806                              0x77fa  (30714)
+stack                        0x826                              0x77da  (30682)
 
-                 Maximum dynamic memory (bytes):         0x77fa  (30714)
+                 Maximum dynamic memory (bytes):         0x77da  (30682)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -124,9 +126,17 @@ External Symbols in Data Memory (by address):
 
                     0x0800                  _length
                     0x0802                  _width
+                    0x0806                  _custom1
+                    0x080e                  _custom2
+                    0x0816                  _custom3
+                    0x081e                  _custom0
 
 External Symbols in Data Memory (by name):
 
+                    0x081e                  _custom0
+                    0x0806                  _custom1
+                    0x080e                  _custom2
+                    0x0816                  _custom3
                     0x0800                  _length
                     0x0802                  _width
 
@@ -134,46 +144,48 @@ External Symbols in Program Memory (by address):
 
                   0x000100                  __resetPRI
                   0x00013c                  __psv_init
-                  0x000152                  __data_init_da
                   0x000152                  __data_init
+                  0x000152                  __data_init_da
                   0x000204                  __DefaultInterrupt
                   0x000208                  _write
                   0x00021e                  _LCD_Initialize
                   0x000330                  _LCD_PutString
                   0x00036a                  _LCD_PutChar
-                  0x000414                  _LCD_ClearScreen
-                  0x000452                  _LCD_CarriageReturn
-                  0x000494                  _LCD_ShiftCursorLeft
-                  0x000516                  _LCD_ShiftCursorRight
-                  0x000588                  _LCD_ShiftCursorUp
-                  0x00059e                  _LCD_ShiftCursorDown
-                  0x0005d0                  _LCD_CursorEnable
-                  0x000610                  _print_lcd
-                  0x00065a                  _main
-                  0x0006fc                  ___delay32
+                  0x000414                  _customChar
+                  0x000472                  _LCD_ClearScreen
+                  0x0004b0                  _LCD_CarriageReturn
+                  0x0004f2                  _LCD_ShiftCursorLeft
+                  0x000574                  _LCD_ShiftCursorRight
+                  0x0005e6                  _LCD_ShiftCursorUp
+                  0x0005fc                  _LCD_ShiftCursorDown
+                  0x00062e                  _LCD_CursorEnable
+                  0x00066e                  _print_lcd
+                  0x0006fa                  _main
+                  0x0007e2                  ___delay32
                   0x0abf00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x000452                  _LCD_CarriageReturn
-                  0x000414                  _LCD_ClearScreen
-                  0x0005d0                  _LCD_CursorEnable
+                  0x0004b0                  _LCD_CarriageReturn
+                  0x000472                  _LCD_ClearScreen
+                  0x00062e                  _LCD_CursorEnable
                   0x00021e                  _LCD_Initialize
                   0x00036a                  _LCD_PutChar
                   0x000330                  _LCD_PutString
-                  0x00059e                  _LCD_ShiftCursorDown
-                  0x000494                  _LCD_ShiftCursorLeft
-                  0x000516                  _LCD_ShiftCursorRight
-                  0x000588                  _LCD_ShiftCursorUp
+                  0x0005fc                  _LCD_ShiftCursorDown
+                  0x0004f2                  _LCD_ShiftCursorLeft
+                  0x000574                  _LCD_ShiftCursorRight
+                  0x0005e6                  _LCD_ShiftCursorUp
                   0x000204                  __DefaultInterrupt
                   0x0abf00                  __FSEC.sec
-                  0x0006fc                  ___delay32
+                  0x0007e2                  ___delay32
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x00065a                  _main
-                  0x000610                  _print_lcd
+                  0x000414                  _customChar
+                  0x0006fa                  _main
+                  0x00066e                  _print_lcd
                   0x000208                  _write
 
 Memory Configuration
@@ -288,34 +300,34 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x101f
+.debug_info       0x000000       0x110f
  *(.debug_info)
- .debug_info      0x000000        0x26a build/default/production/newmain.o
- .debug_info      0x00026a        0xc52 build/default/production/lcd.o
- .debug_info      0x000ebc        0x163 build/default/production/print_lcd.o
+ .debug_info      0x000000        0x316 build/default/production/newmain.o
+ .debug_info      0x000316        0xc96 build/default/production/lcd.o
+ .debug_info      0x000fac        0x163 build/default/production/print_lcd.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x25c
+.debug_abbrev     0x000000        0x28b
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xaa build/default/production/newmain.o
- .debug_abbrev    0x0000aa        0x164 build/default/production/lcd.o
- .debug_abbrev    0x00020e         0x4e build/default/production/print_lcd.o
+ .debug_abbrev    0x000000         0xb3 build/default/production/newmain.o
+ .debug_abbrev    0x0000b3        0x18a build/default/production/lcd.o
+ .debug_abbrev    0x00023d         0x4e build/default/production/print_lcd.o
 
-.debug_line       0x000000        0x23b
+.debug_line       0x000000        0x258
  *(.debug_line)
- .debug_line      0x000000         0x4f build/default/production/newmain.o
- .debug_line      0x00004f        0x1b1 build/default/production/lcd.o
- .debug_line      0x000200         0x3b build/default/production/print_lcd.o
+ .debug_line      0x000000         0x63 build/default/production/newmain.o
+ .debug_line      0x000063        0x1ba build/default/production/lcd.o
+ .debug_line      0x00021d         0x3b build/default/production/print_lcd.o
 
-.debug_frame      0x000000        0x1de
+.debug_frame      0x000000        0x200
  *(.debug_frame)
  .debug_frame     0x000000         0x58 build/default/production/newmain.o
- .debug_frame     0x000058        0x158 build/default/production/lcd.o
- .debug_frame     0x0001b0         0x2e build/default/production/print_lcd.o
+ .debug_frame     0x000058        0x17a build/default/production/lcd.o
+ .debug_frame     0x0001d2         0x2e build/default/production/print_lcd.o
 
-.debug_str        0x000000         0x39
+.debug_str        0x000000         0x44
  *(.debug_str)
- .debug_str       0x000000         0x39 build/default/production/lcd.o
+ .debug_str       0x000000         0x44 build/default/production/lcd.o
 
 .debug_loc
  *(.debug_loc)
@@ -324,14 +336,14 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x140
+                  0x000000        0x17f
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x3e build/default/production/newmain.o
+                  0x000000         0x6e build/default/production/newmain.o
  .debug_pubnames
-                  0x00003e         0xe6 build/default/production/lcd.o
+                  0x00006e         0xf5 build/default/production/lcd.o
  .debug_pubnames
-                  0x000124         0x1c build/default/production/print_lcd.o
+                  0x000163         0x1c build/default/production/print_lcd.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -2498,6 +2510,16 @@ epmp_cs1            0x20000          0x4
 .nbss               0x0804          0x2
  .nbss              0x0804          0x2 build/default/production/lcd.o
 
+.data               0x0806         0x18
+ .data              0x0806         0x18 build/default/production/newmain.o
+                    0x0806                  _custom1
+                    0x080e                  _custom2
+                    0x0816                  _custom3
+
+.bss                0x081e          0x8
+ .bss               0x081e          0x8 build/default/production/newmain.o
+                    0x081e                  _custom0
+
 .config_ALTVREF
                   0x0abf2c          0x2
  .config_ALTVREF
@@ -2523,25 +2545,26 @@ epmp_cs1            0x20000          0x4
 .config_BSLIM     0x0abf10          0x2
  .config_BSLIM    0x0abf10          0x2 build/default/production/newmain.o
 
-.text             0x00021e        0x4de
- .text            0x00021e        0x3f2 build/default/production/lcd.o
+.text             0x00021e        0x596
+ .text            0x00021e        0x450 build/default/production/lcd.o
                   0x00021e                  _LCD_Initialize
                   0x000330                  _LCD_PutString
                   0x00036a                  _LCD_PutChar
-                  0x000414                  _LCD_ClearScreen
-                  0x000452                  _LCD_CarriageReturn
-                  0x000494                  _LCD_ShiftCursorLeft
-                  0x000516                  _LCD_ShiftCursorRight
-                  0x000588                  _LCD_ShiftCursorUp
-                  0x00059e                  _LCD_ShiftCursorDown
-                  0x0005d0                  _LCD_CursorEnable
- .text            0x000610         0xec build/default/production/newmain.o
-                  0x000610                  _print_lcd
-                  0x00065a                  _main
+                  0x000414                  _customChar
+                  0x000472                  _LCD_ClearScreen
+                  0x0004b0                  _LCD_CarriageReturn
+                  0x0004f2                  _LCD_ShiftCursorLeft
+                  0x000574                  _LCD_ShiftCursorRight
+                  0x0005e6                  _LCD_ShiftCursorUp
+                  0x0005fc                  _LCD_ShiftCursorDown
+                  0x00062e                  _LCD_CursorEnable
+ .text            0x00066e        0x146 build/default/production/newmain.o
+                  0x00066e                  _print_lcd
+                  0x0006fa                  _main
 
-.init.delay32     0x0006fc         0x1c
- .init.delay32    0x0006fc         0x1c c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(delay32da.Leo)
-                  0x0006fc                  ___delay32
+.dinit            0x0007b4         0x2e
+ .dinit           0x0007b4         0x2e data_init
 
-.dinit            0x000718         0x12
- .dinit           0x000718         0x12 data_init
+.init.delay32     0x0007e2         0x1c
+ .init.delay32    0x0007e2         0x1c c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(delay32da.Leo)
+                  0x0007e2                  ___delay32

@@ -245,6 +245,17 @@ void LCD_PutChar ( char inputCharacter )
             break ;
     }
 }
+
+
+
+void customChar(char * customChar, int adresse ){
+    
+    LCD_SendCommand(0x40+adresse*8, LCD_S_INSTR);
+    int i = 0;
+    for(i = 0; i < 8; i++){
+        LCD_SendData(customChar[i]);
+    }
+}
 /*********************************************************************
  * Function: void LCD_ClearScreen(void);
  *

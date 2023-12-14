@@ -73,46 +73,106 @@
 int length = 2;
 int width = 16;
 
+/*
+ * DEFINITION DES CUSTOMS CHAR
+ */
+
+char custom0[8] = {
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000
+};
+
+char custom1[8] = {
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000
+};
+
+char custom2[8] = {
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111
+};
+
+char custom3[8] = {
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111,
+    0b11111
+};
+
+
+
 void print_lcd(char matrice[length][width]){
     /*
      * fonction permettant l'affichage de la matrice de char sur le LCD
-     */
-    
+     */   
+    LCD_ClearScreen();
     int i;
     int j;
     for(i=0;i<length;i++){
         for(j=0;j<width;j++){
-            LCD_PutChar(matrice[i][j]);
+            switch(matrice[i][j]) {
+                case '0':
+                    LCD_PutChar(0);
+                    break;
+                case '1':
+                    LCD_PutChar(1);
+                    break;
+                case '2':
+                    LCD_PutChar(2);
+                    break;
+                case '3':
+                    LCD_PutChar(3);
+                    break;    
+                default :
+                    LCD_PutChar(0);
+                    break;
+            } 
         }
-       // LCD_CarriageReturn();
-        /*LCD_ShiftCursorDown();
-        LCD_ShiftCursorRight();
-        LCD_ShiftCursorRight();
-        LCD_ShiftCursorRight();
-        LCD_ShiftCursorRight();
-        LCD_ShiftCursorRight();
-        LCD_ShiftCursorRight();
-        LCD_ShiftCursorRight();
-        LCD_ShiftCursorRight();*/
-    } 
-    
+    }  
 }
 
 int main(int argc, char** argv) {
     LCD_Initialize();
+    customChar(&custom0, 0x00);
+    customChar(&custom1, 0x01);
+    customChar(&custom2, 0x02);
+    customChar(&custom3, 0x03);
     char matrice[length][width];
     int i;
     int j;
     for (i = 0; i < 2; i++) {
             for (j = 0; j < 16; j++) {
-                matrice[i][j] = '0';
+                matrice[i][j] = '3';
             }
     }
+
+            
     
     while(1){
         print_lcd(matrice);
-        __delay_ms(50);
-        //LCD_ClearScreen();
+        __delay_ms(200);
     }
     return 1;
 }
