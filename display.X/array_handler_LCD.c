@@ -21,5 +21,5 @@ char arrayhandler(char passed_array[4][16]){//array[4][16]
             }
         }
     }
-    return (result)] ;
+    return (result) ;
 }
