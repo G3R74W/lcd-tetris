@@ -144,7 +144,7 @@ void arrayHandler(char passed_array[4][16], char result[2][16]) {
 
 
 
-void print_lcd(char matrice[4][16]){
+void print_lcd(char matrice[2][16]){
     /*
      * fonction permettant l'affichage de la matrice de char sur le LCD
      * @param : 
@@ -214,10 +214,11 @@ int main(int argc, char** argv) {
     customChar(&custom3, 0x03);
 
     char matrice[4][16] = {
-        {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
-        {1,0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
-        {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
-        {1,0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+        {3, 1, 7, 4, 2, 0, 7, 5, 6, 4, 3, 1, 2, 0, 7, 5},
+        {2, 6, 4, 1, 3, 5, 0, 7, 6, 2, 4, 1, 5, 3, 0, 7},
+        {1, 3, 5, 7, 2, 6, 0, 4, 1, 3, 5, 7, 2, 6, 4, 0},
+        {7, 2, 1, 4, 6, 0, 3, 5, 7, 2, 1, 4, 6, 3, 5, 0},
+
     };
     
     
@@ -234,8 +235,9 @@ int main(int argc, char** argv) {
      */
   
     char result[2][16];
-    arrayHandler(matrice, result);
+    
     while(1){
+        arrayHandler(matrice, result);
         print_lcd(result);
         __delay_ms(200);
     }
