@@ -68,8 +68,10 @@
 #include <time.h>
 
 /*
- * 
+ * variables globales
  */
+
+
 int length = 2;
 int width = 16;
 
@@ -121,7 +123,31 @@ char custom3[8] = {
     0b11111
 };
 
+
+void init(){
+    /*
+     *Fonction permettant d'init le lcd et d'écrire les custom char dans la 
+     * memoire
+     * 
+     */
+    LCD_Initialize();
+    
+    customChar(&custom0, 0x00);
+    customChar(&custom1, 0x01);
+    customChar(&custom2, 0x02);
+    customChar(&custom3, 0x03);
+}
+
 void arrayHandler(char passed_array[4][16], char result[2][16]) {
+    /*
+     *Fonction permettant de transformer la matrice 4 16 en 2 16
+     * @param:
+     * passed array : matrice 4 par 16 de char contenant les caracteres (0 a 7)
+     * result : matrice 2 par 16 de char binaire
+     * permet l'utilisation des caractères speciaux
+     *
+     */
+    
     int i, j;
 
     for (i = 0; i < 2; i++) {
@@ -181,38 +207,13 @@ void print_lcd(char matrice[2][16]){
     }  
 }
 
-/*
-void transform(char matrix[length][width]) {
-    int i;
-    int j;
-    for (i = 0; i < length; i++) {
-        for (j = 0; j < width; j++) {
-            char poids_fort = matrix[i][j] >> 4;
-            char poids_faible = matrix[i][j] & 0x0F;
-            if ((poids_fort == 0) && (poids_faible == 0)) {
-                matrix[i][j] = '0';
-            }
-            if ((poids_fort != 0) && (poids_faible == 0)) {
-                matrix[i][j] = '1';
-            }
-            if ((poids_fort == 0) && (poids_faible != 0)) {
-                matrix[i][j] = '2';
-            }
-            if ((poids_fort != 0) && (poids_faible != 0)) {
-                matrix[i][j] = '3';
-            }
-        }
-    }
-}
-*/
 
 int main(int argc, char** argv) {
-    LCD_Initialize();
-    customChar(&custom0, 0x00);
-    customChar(&custom1, 0x01);
-    customChar(&custom2, 0x02);
-    customChar(&custom3, 0x03);
 
+    init();
+    
+    //creation d'une matrice test
+    //pas besoin de l'utiliser --> on utilise votre matrice (liste <3)
     char matrice[4][16] = {
         {3, 1, 7, 4, 2, 0, 7, 5, 6, 4, 3, 1, 2, 0, 7, 5},
         {2, 6, 4, 1, 3, 5, 0, 7, 6, 2, 4, 1, 5, 3, 0, 7},
@@ -221,19 +222,7 @@ int main(int argc, char** argv) {
 
     };
     
-    
-    /*
-    char matrice[2][16];
-    int i;
-    int j;
-    for (i = 0; i < 2; i++) {
-            for (j = 0; j < 16; j++) {
-                matrice[i][j] = 2;
-            }
-    }
-     * 
-     */
-  
+    //ca on en a besoin 
     char result[2][16];
     
     while(1){
