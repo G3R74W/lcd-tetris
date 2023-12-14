@@ -123,9 +123,28 @@ char custom3[8] = {
 
 
 
+void arrayHandler(char passed_array[4][16], char result[2][16]) {
+    int i, j;
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 16; j++) {
+            if (passed_array[i][j] != 0) {
+                if (i % 2 == 0) {
+                    result[i / 2][j] += 1;
+                } else {
+                    result[i / 2][j] += 2;
+                }
+            }
+        }
+    }
+}
+
+
 void print_lcd(char matrice[length][width]){
     /*
      * fonction permettant l'affichage de la matrice de char sur le LCD
+     * @param : 
+     * matrice de char en 2 par 16
+     * 
      */   
     LCD_ClearScreen();
     int i;
@@ -133,16 +152,16 @@ void print_lcd(char matrice[length][width]){
     for(i=0;i<length;i++){
         for(j=0;j<width;j++){
             switch(matrice[i][j]) {
-                case '0':
+                case 0:
                     LCD_PutChar(0);
                     break;
-                case '1':
+                case 1:
                     LCD_PutChar(1);
                     break;
-                case '2':
+                case 2:
                     LCD_PutChar(2);
                     break;
-                case '3':
+                case 3:
                     LCD_PutChar(3);
                     break;    
                 default :
@@ -159,19 +178,28 @@ int main(int argc, char** argv) {
     customChar(&custom1, 0x01);
     customChar(&custom2, 0x02);
     customChar(&custom3, 0x03);
-    char matrice[length][width];
-    int i;
+    //char matrice[length][width];
+     char matrice[4][16] = {
+        {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+        {1,0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+        {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
+        {1,0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
+    };
+    
+     char matrice2[2][16];
+     
+    /*int i;
     int j;
     for (i = 0; i < 2; i++) {
             for (j = 0; j < 16; j++) {
-                matrice[i][j] = '3';
+                matrice[i][j] = '1';
             }
-    }
+    }*/
 
-            
+    arrayHandler(matrice, matrice2);   
     
     while(1){
-        print_lcd(matrice);
+        print_lcd(matrice2);
         __delay_ms(200);
     }
     return 1;
