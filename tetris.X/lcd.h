@@ -103,4 +103,5 @@ void LCD_ShiftCursorLeft ( void ) ;
 void LCD_ShiftCursorRight ( void ) ;
 void LCD_ShiftCursorUp ( void ) ;
 void LCD_ShiftCursorDown ( void ) ;
+void customChar(char * customChar, int adresse );
 #endif
