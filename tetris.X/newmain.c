@@ -2,7 +2,7 @@
  * File:   newmain.c
  * Author: tw286615
  *
- * Created on 14 dÃ©cembre 2023, 09:07
+ * Created on 14 décembre 2023, 09:07
  */
 // FSEC
 #pragma config BWRP = OFF               // Boot Segment Write-Protect bit (Boot Segment may be written)
@@ -121,18 +121,9 @@ char custom3[8] = {
     0b11111
 };
 
-
-
-void arrayHandler(char passed_array[2][16], char result[2][16]) {
+void arrayHandler(char passed_array[4][16], char result[2][16]) {
     int i, j;
-    char intermediate_array[4][16];
-    
-    for (i = 0; i < 16; i++){
-        intermediate_array[1][i] = passed_array[1][16] && 0b00001111;
-        intermediate_array[2][i] = passed_array[1][16] && 0b11110000;
-        intermediate_array[3][i] = passed_array[2][16] && 0b00001111;
-        intermediate_array[4][i] = passed_array[2][16] && 0b11110000;
-    }  
+
     for (i = 0; i < 2; i++) {
         for (j = 0; j < 16; j++) {
             result[i][j] = 0;
@@ -140,7 +131,7 @@ void arrayHandler(char passed_array[2][16], char result[2][16]) {
     }
     for (i = 0; i < 4; i++) {
         for (j = 0; j < 16; j++) {
-            if (intermediate_array[i][j] != 0) {
+            if (passed_array[i][j] != 0) {
                 if (i % 2 == 0) {
                     result[i / 2][j] += 1;
                 } else {
@@ -152,16 +143,21 @@ void arrayHandler(char passed_array[2][16], char result[2][16]) {
 }
 
 
-void print_lcd(char matrice[length][width]){
+
+void print_lcd(char matrice[4][16]){
     /*
      * fonction permettant l'affichage de la matrice de char sur le LCD
      * @param : 
-     * matrice de char en 2 par 16
+     * matrice de char en 4 par 16
+     * 
+     * transformation en 2 par 16
      * 
      */   
+
     LCD_ClearScreen();
     int i;
     int j;
+    
     for(i=0;i<length;i++){
         for(j=0;j<width;j++){
             switch(matrice[i][j]) {
@@ -185,61 +181,64 @@ void print_lcd(char matrice[length][width]){
     }  
 }
 
+/*
+void transform(char matrix[length][width]) {
+    int i;
+    int j;
+    for (i = 0; i < length; i++) {
+        for (j = 0; j < width; j++) {
+            char poids_fort = matrix[i][j] >> 4;
+            char poids_faible = matrix[i][j] & 0x0F;
+            if ((poids_fort == 0) && (poids_faible == 0)) {
+                matrix[i][j] = '0';
+            }
+            if ((poids_fort != 0) && (poids_faible == 0)) {
+                matrix[i][j] = '1';
+            }
+            if ((poids_fort == 0) && (poids_faible != 0)) {
+                matrix[i][j] = '2';
+            }
+            if ((poids_fort != 0) && (poids_faible != 0)) {
+                matrix[i][j] = '3';
+            }
+        }
+    }
+}
+*/
+
 int main(int argc, char** argv) {
     LCD_Initialize();
     customChar(&custom0, 0x00);
     customChar(&custom1, 0x01);
     customChar(&custom2, 0x02);
     customChar(&custom3, 0x03);
-    //char matrice[length][width];
-     char matrice[2][16] = {
+
+    char matrice[4][16] = {
         {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
         {1,0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
         {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1},
         {1,0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0},
     };
-     char matrice_1[2][16] = {
-         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
-                
-     };
-     char matrice_2[][16] = {
-         {64,64,0,0,64,64,0,0,64,64,0,0,64,64,0,0},
-         {0,0,64,64,0,0,64,64,0,0,64,64,0,0,64,64}
-                
-     };
-     
-     char liste [3] = {*matrice, *matrice_1, *matrice_2};
-     
-     
-     char matrice2[2][16];
-     
-    /*int i;
+    
+    
+    /*
+    char matrice[2][16];
+    int i;
     int j;
     for (i = 0; i < 2; i++) {
             for (j = 0; j < 16; j++) {
-                matrice[i][j] = '1';
+                matrice[i][j] = 2;
             }
-    }*/
-     
-    arrayHandler(matrice_2, matrice2);   
-    
-    
-    
+    }
+     * 
+     */
+  
+    char result[2][16];
+    arrayHandler(matrice, result);
     while(1){
-        arrayHandler(matrice_2, matrice2); 
-        print_lcd(matrice2);
-        __delay_ms(200);
-        arrayHandler(matrice_1, matrice2); 
-        print_lcd(matrice2);
+        print_lcd(result);
         __delay_ms(200);
     }
     return 1;
 }
 
-
-void aleatoire(char machin[3]){
-    int i = 0;
-}

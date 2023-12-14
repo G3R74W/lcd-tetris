@@ -4,13 +4,13 @@ Tool Name:
   c:\program files\microchip\xc16\v1.70\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp000005e4.00 \
-  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp000005e4.01 \
-  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp000005e4.02 \
-  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp000005e4.03 \
-  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp000005e4.04 \
-  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp000005e4.05 \
-  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp000005e4.06 \
+  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp00002290.00 \
+  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp00002290.01 \
+  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp00002290.02 \
+  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp00002290.03 \
+  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp00002290.04 \
+  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp00002290.05 \
+  -TC:\\Users\\tw286615\\AppData\\Local\\Temp\\tmp00002290.06 \
   -p24FJ1024GB610 \
   --mdfp=C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC24F-GA-GB_DFP/1.9.336/xc16 \
   -o \
@@ -100,13 +100,12 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x100               0x11e           0x1ad  (429)
-.const                       0x21e                0x40            0x60  (96)
-.text                        0x25e               0x5ac           0x882  (2178)
-.dinit                       0x80a                0x2e            0x45  (69)
-.init.delay32                0x838                0x1c            0x2a  (42)
+.text                        0x100               0x122           0x1b3  (435)
+.text                        0x222               0x5f0           0x8e8  (2280)
+.dinit                       0x812                0x2e            0x45  (69)
+.init.delay32                0x840                0x1c            0x2a  (42)
 
-                 Total "program" memory used (bytes):          0xafe  (2814) <1%
+                 Total "program" memory used (bytes):          0xb0a  (2826) <1%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x8000]
@@ -164,49 +163,49 @@ External Symbols in Program Memory (by address):
                   0x00013c                  __psv_init
                   0x000152                  __data_init_da
                   0x000152                  __data_init
-                  0x000204                  __DefaultInterrupt
-                  0x000208                  _write
-                  0x00025e                  _LCD_Initialize
-                  0x000370                  _LCD_PutString
-                  0x0003aa                  _LCD_PutChar
-                  0x000454                  _customChar
-                  0x0004b2                  _LCD_ClearScreen
-                  0x0004f0                  _LCD_CarriageReturn
-                  0x000532                  _LCD_ShiftCursorLeft
-                  0x0005b4                  _LCD_ShiftCursorRight
-                  0x000626                  _LCD_ShiftCursorUp
-                  0x00063c                  _LCD_ShiftCursorDown
-                  0x00066e                  _LCD_CursorEnable
-                  0x0006ae                  _arrayhandler
-                  0x000744                  _print_lcd
-                  0x0007d0                  _main
-                  0x000838                  ___delay32
+                  0x000208                  __DefaultInterrupt
+                  0x00020c                  _write
+                  0x000222                  _LCD_Initialize
+                  0x000334                  _LCD_PutString
+                  0x00036e                  _LCD_PutChar
+                  0x000418                  _customChar
+                  0x000476                  _LCD_ClearScreen
+                  0x0004b4                  _LCD_CarriageReturn
+                  0x0004f6                  _LCD_ShiftCursorLeft
+                  0x000578                  _LCD_ShiftCursorRight
+                  0x0005ea                  _LCD_ShiftCursorUp
+                  0x000600                  _LCD_ShiftCursorDown
+                  0x000632                  _LCD_CursorEnable
+                  0x000672                  _print_lcd
+                  0x000706                  _transform
+                  0x0007e6                  _main
+                  0x000840                  ___delay32
                   0x0abf00                  __FSEC.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x0004f0                  _LCD_CarriageReturn
-                  0x0004b2                  _LCD_ClearScreen
-                  0x00066e                  _LCD_CursorEnable
-                  0x00025e                  _LCD_Initialize
-                  0x0003aa                  _LCD_PutChar
-                  0x000370                  _LCD_PutString
-                  0x00063c                  _LCD_ShiftCursorDown
-                  0x000532                  _LCD_ShiftCursorLeft
-                  0x0005b4                  _LCD_ShiftCursorRight
-                  0x000626                  _LCD_ShiftCursorUp
-                  0x000204                  __DefaultInterrupt
+                  0x0004b4                  _LCD_CarriageReturn
+                  0x000476                  _LCD_ClearScreen
+                  0x000632                  _LCD_CursorEnable
+                  0x000222                  _LCD_Initialize
+                  0x00036e                  _LCD_PutChar
+                  0x000334                  _LCD_PutString
+                  0x000600                  _LCD_ShiftCursorDown
+                  0x0004f6                  _LCD_ShiftCursorLeft
+                  0x000578                  _LCD_ShiftCursorRight
+                  0x0005ea                  _LCD_ShiftCursorUp
+                  0x000208                  __DefaultInterrupt
                   0x0abf00                  __FSEC.sec
-                  0x000838                  ___delay32
+                  0x000840                  ___delay32
                   0x000152                  __data_init
                   0x000152                  __data_init_da
                   0x00013c                  __psv_init
                   0x000100                  __resetPRI
-                  0x0006ae                  _arrayhandler
-                  0x000454                  _customChar
-                  0x0007d0                  _main
-                  0x000744                  _print_lcd
-                  0x000208                  _write
+                  0x000418                  _customChar
+                  0x0007e6                  _main
+                  0x000672                  _print_lcd
+                  0x000706                  _transform
+                  0x00020c                  _write
 
 Memory Configuration
 
@@ -295,7 +294,7 @@ LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000100        0x11e
+.text             0x000100        0x122
  *(.init)
  .init            0x000100         0x4c c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt0_extended24.o)
                   0x000100                  __resetPRI
@@ -306,19 +305,20 @@ LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\libfx-elf.a
                   0x000152                  __data_init_da
  *(.user_init)
  *(.handle)
+ .handle          0x000204          0x4 jump_table
  *(.isr*)
- .isr             0x000204          0x4 default_isr
-                  0x000204                  __DefaultInterrupt
+ .isr             0x000208          0x4 default_isr
+                  0x000208                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
- .libc.write      0x000208         0x14 build/default/debug/print_lcd.o
-                  0x000208                  _write
+ .libc.write      0x00020c         0x14 build/default/debug/print_lcd.o
+                  0x00020c                  _write
  .libpic30_crt_start_mode
-                  0x00021c          0x2 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt_start_mode_normalda.Leo)
-                  0x00021c                  __crt_start_mode
-                  0x00021c                  __crt_start_mode_normal
+                  0x000220          0x2 c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(crt_start_mode_normalda.Leo)
+                  0x000220                  __crt_start_mode
+                  0x000220                  __crt_start_mode_normal
 
 usercode
  *(usercode)
@@ -358,24 +358,24 @@ __FDEVOPT1
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x119d
+.debug_info       0x000000       0x1191
  *(.debug_info)
- .debug_info      0x000000        0x3a4 build/default/debug/newmain.o
- .debug_info      0x0003a4        0xc96 build/default/debug/lcd.o
- .debug_info      0x00103a        0x163 build/default/debug/print_lcd.o
+ .debug_info      0x000000        0x398 build/default/debug/newmain.o
+ .debug_info      0x000398        0xc96 build/default/debug/lcd.o
+ .debug_info      0x00102e        0x163 build/default/debug/print_lcd.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x294
+.debug_abbrev     0x000000        0x2c3
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xbc build/default/debug/newmain.o
- .debug_abbrev    0x0000bc        0x18a build/default/debug/lcd.o
- .debug_abbrev    0x000246         0x4e build/default/debug/print_lcd.o
+ .debug_abbrev    0x000000         0xeb build/default/debug/newmain.o
+ .debug_abbrev    0x0000eb        0x18a build/default/debug/lcd.o
+ .debug_abbrev    0x000275         0x4e build/default/debug/print_lcd.o
 
-.debug_line       0x000000        0x267
+.debug_line       0x000000        0x26d
  *(.debug_line)
- .debug_line      0x000000         0x72 build/default/debug/newmain.o
- .debug_line      0x000072        0x1ba build/default/debug/lcd.o
- .debug_line      0x00022c         0x3b build/default/debug/print_lcd.o
+ .debug_line      0x000000         0x78 build/default/debug/newmain.o
+ .debug_line      0x000078        0x1ba build/default/debug/lcd.o
+ .debug_line      0x000232         0x3b build/default/debug/print_lcd.o
 
 .debug_frame      0x000000        0x212
  *(.debug_frame)
@@ -383,9 +383,10 @@ __FDEVOPT1
  .debug_frame     0x00006a        0x17a build/default/debug/lcd.o
  .debug_frame     0x0001e4         0x2e build/default/debug/print_lcd.o
 
-.debug_str        0x000000         0x44
+.debug_str        0x000000         0x4e
  *(.debug_str)
- .debug_str       0x000000         0x44 build/default/debug/lcd.o
+ .debug_str       0x000000          0xa build/default/debug/newmain.o
+ .debug_str       0x00000a         0x44 build/default/debug/lcd.o
 
 .debug_loc
  *(.debug_loc)
@@ -394,14 +395,14 @@ __FDEVOPT1
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x190
+                  0x000000        0x18d
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x7f build/default/debug/newmain.o
+                  0x000000         0x7c build/default/debug/newmain.o
  .debug_pubnames
-                  0x00007f         0xf5 build/default/debug/lcd.o
+                  0x00007c         0xf5 build/default/debug/lcd.o
  .debug_pubnames
-                  0x000174         0x1c build/default/debug/print_lcd.o
+                  0x000171         0x1c build/default/debug/print_lcd.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -2530,6 +2531,7 @@ LOAD c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-c-elf.a
 END GROUP
 OUTPUT(dist/default/debug/tetris.X.debug.elf elf32-pic30)
 LOAD /CW/_FSEC
+LOAD jump_table
 LOAD default_isr
 LOAD data_init
 
@@ -2603,30 +2605,27 @@ epmp_cs1            0x20000          0x4
 .config_BSLIM     0x0abf10          0x2
  .config_BSLIM    0x0abf10          0x2 build/default/debug/newmain.o
 
-.const              0x821e         0x40 load address 0x00021e  
- .const             0x821e         0x40 build/default/debug/newmain.o
+.text             0x000222        0x5f0
+ .text            0x000222        0x450 build/default/debug/lcd.o
+                  0x000222                  _LCD_Initialize
+                  0x000334                  _LCD_PutString
+                  0x00036e                  _LCD_PutChar
+                  0x000418                  _customChar
+                  0x000476                  _LCD_ClearScreen
+                  0x0004b4                  _LCD_CarriageReturn
+                  0x0004f6                  _LCD_ShiftCursorLeft
+                  0x000578                  _LCD_ShiftCursorRight
+                  0x0005ea                  _LCD_ShiftCursorUp
+                  0x000600                  _LCD_ShiftCursorDown
+                  0x000632                  _LCD_CursorEnable
+ .text            0x000672        0x1a0 build/default/debug/newmain.o
+                  0x000672                  _print_lcd
+                  0x000706                  _transform
+                  0x0007e6                  _main
 
-.text             0x00025e        0x5ac
- .text            0x00025e        0x450 build/default/debug/lcd.o
-                  0x00025e                  _LCD_Initialize
-                  0x000370                  _LCD_PutString
-                  0x0003aa                  _LCD_PutChar
-                  0x000454                  _customChar
-                  0x0004b2                  _LCD_ClearScreen
-                  0x0004f0                  _LCD_CarriageReturn
-                  0x000532                  _LCD_ShiftCursorLeft
-                  0x0005b4                  _LCD_ShiftCursorRight
-                  0x000626                  _LCD_ShiftCursorUp
-                  0x00063c                  _LCD_ShiftCursorDown
-                  0x00066e                  _LCD_CursorEnable
- .text            0x0006ae        0x15c build/default/debug/newmain.o
-                  0x0006ae                  _arrayhandler
-                  0x000744                  _print_lcd
-                  0x0007d0                  _main
+.dinit            0x000812         0x2e
+ .dinit           0x000812         0x2e data_init
 
-.dinit            0x00080a         0x2e
- .dinit           0x00080a         0x2e data_init
-
-.init.delay32     0x000838         0x1c
- .init.delay32    0x000838         0x1c c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(delay32da.Leo)
-                  0x000838                  ___delay32
+.init.delay32     0x000840         0x1c
+ .init.delay32    0x000840         0x1c c:/program files/microchip/xc16/v1.70/bin/bin/../../lib\liblega-pic30-elf.a(delay32da.Leo)
+                  0x000840                  ___delay32
