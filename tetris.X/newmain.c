@@ -208,6 +208,19 @@ void print_lcd(char matrice[2][16]){
 }
 
 
+void affichage(char matrice[4][16]){
+    /*
+     *Fonction permettant d'appeler les fct arrayHandler et print_lcd
+     * @param:
+     * matrice de char 4 par 16
+     */
+    char result[2][16];
+    
+    arrayHandler(matrice, result);
+    print_lcd(result);
+    __delay_ms(200);
+}
+
 int main(int argc, char** argv) {
 
     init();
@@ -215,20 +228,17 @@ int main(int argc, char** argv) {
     //creation d'une matrice test
     //pas besoin de l'utiliser --> on utilise votre matrice (liste <3)
     char matrice[4][16] = {
-        {3, 1, 7, 4, 2, 0, 7, 5, 6, 4, 3, 1, 2, 0, 7, 5},
-        {2, 6, 4, 1, 3, 5, 0, 7, 6, 2, 4, 1, 5, 3, 0, 7},
-        {1, 3, 5, 7, 2, 6, 0, 4, 1, 3, 5, 7, 2, 6, 4, 0},
-        {7, 2, 1, 4, 6, 0, 3, 5, 7, 2, 1, 4, 6, 3, 5, 0},
+        {0, 1, 7, 4, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0},
+        {0, 6, 4, 1, 3, 5, 1, 7, 6, 2, 4, 1, 5, 3, 0, 0},
+        {0, 3, 5, 7, 2, 6, 1, 4, 1, 3, 5, 7, 2, 6, 0, 0},
+        {0, 2, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0},
 
     };
     
-    //ca on en a besoin 
-    char result[2][16];
+
     
     while(1){
-        arrayHandler(matrice, result);
-        print_lcd(result);
-        __delay_ms(200);
+        affichage(matrice);
     }
     return 1;
 }
