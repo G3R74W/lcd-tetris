@@ -13,7 +13,7 @@ char arrayhandler(char passed_array[4][16]){//array[4][16]
                     result[i >> 1][j*4+3]+=1;
                 }
                 else{
-                result[i >> 1][j*4]+=0b00001111;
+                result[i >> 1][j*4]+=2;
                     result[i >> 1][j*4+1]+=2;
                     result[i >> 1][j*4+2]+=2;
                     result[i >> 1][j*4+3]+=2;
